@@ -1,0 +1,187 @@
+@import 'normalize';
+@import 'breaker';
+@import 'settings';
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	background-color: $editorBg;
+}
+
+.post {
+	background-color: $black;
+
+	.header {
+		border-bottom: 1px solid lighten($black, 10%);
+
+		span {
+			color: darken($white, 60%);
+		}
+
+		a:link, a:visited {
+			color: darken($white, 40%);
+		}
+
+		a:hover, a:active {
+			color: darken($white, 20%);
+		}
+	}
+
+}
+
+.header {
+	border-bottom: 1px solid darken($editorBg, 10%);
+
+	h1 {
+		padding: 15px 20px;
+		font-family: $mono;
+		font-weight: $regular;
+		font-size: 15px;
+
+		@include below($s) {
+			font-size: 11px;
+		}
+	}
+
+	span {
+		color: darken($editorBg, 40%);
+	}
+
+	a {
+		text-decoration: none;
+	}
+
+	a:link, a:visited {
+		color: darken($editorBg, 60%);
+	}
+
+	a:hover, a:active {
+		color: darken($editorBg, 80%);
+	}
+}
+
+#app {
+	position: absolute;
+	top: 55px;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+.content {
+	position: relative;
+	margin: 0;
+	padding: 20px;
+	font-size: 1.4rem;
+	font-family: $mono;
+	line-height: 1.8em;
+}
+
+.save {
+	display: none;
+	position: absolute;
+	left: 20px;
+	font-family: $mono;
+	font-size: 14px;
+	color: darken($editorBg, 60%);
+
+	&.docked {
+		position: fixed;
+		padding: 15px 20px;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background-color: $editorBg;
+		border-top: 1px solid darken($editorBg, 10%);
+	}
+}
+
+.code {
+	background-color: $black;
+
+	pre {
+		margin: 0;
+		font-family: $mono;
+	}
+}
+
+.text-editor {
+	position: absolute;
+	display: block;
+	top: 20px;
+	right: 20px;
+	left: 20px;
+	bottom: 20px;
+	border: none;
+	resize: none;
+	font-family: $mono;
+	font-size: 14px;
+	line-height: 1.8em;
+	background-color: $editorBg;
+
+	&:focus {
+		outline: none;
+	}
+}
+
+.btn {
+	padding: 15px 15px;
+	appearance: none;
+	border: none;
+	font-family: $mono;
+	font-size: 16px;
+}
+
+.btn-save {
+	display: none;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	background-color: $black;
+	color: $white;
+
+	&[disabled] {
+		background-color: $lightGrey;
+		color: $grey;
+	}
+
+	@include below($s) {
+		display: block;
+	}
+}
+
+.dump {
+	display: none;
+	overflow: visible;
+	font-family: $mono;
+	font-size: 14px;
+	line-height: 1.8em;
+}
+
+ol {
+	user-select: none;
+}
+
+li span {
+	user-select: all;
+}
+
+::-moz-selection {
+       background-color: rgba(254, 255, 225, 0.99);
+       color: $black;
+}
+
+::selection {
+       background-color: rgba(254, 255, 225, 0.99);
+       color: $black;
+}
+
+@import 'syntax';

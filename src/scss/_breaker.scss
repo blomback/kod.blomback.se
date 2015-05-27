@@ -1,0 +1,58 @@
+/**
+ * May this be a helping hand in the land of media queries.
+ * Nothing is a waste of time if you use the experience wisely.
+ */
+
+// Gone is the desktop, table and mobile. Let's use s, m, l, xl.
+$s: 500px;
+$m: 800px;
+$l: 1050px;
+$xl: 1410px;
+
+@mixin below($screenSize, $rotation: false) {
+	@if( $rotation == landscape or $rotation == portrait ) {
+		@media only screen and (max-width: $screenSize) and (orientation : $rotation) { @content; }
+	}
+	@else {
+		@media only screen and (max-width: $screenSize)  { @content; }
+
+	}
+}
+
+@mixin above($screenSize, $rotation: false) {
+
+	@if( $rotation == landscape or $rotation == portrait ) {
+		@media only screen and (min-width: $screenSize) and (orientation : $rotation) { @content; }
+	}
+	@else {
+		@media only screen and (min-width: $screenSize)  { @content; }
+	}
+}
+
+/**
+ * Retina
+ */
+@mixin retina() {
+	@media only screen and (-webkit-min-device-pixel-ratio : 1.5 ),
+	only screen and (min-device-pixel-ratio : 1.5) { @content; }
+}
+
+//
+@mixin higher($screenSize, $rotation: false){
+
+	@if( $rotation == landscape or $rotation == portrait ) {
+		@media only screen and (min-height: $screenSize) and (orientation : $rotation) { @content; }
+	}
+	@else {
+		@media only screen and (min-height: $screenSize)  { @content; }
+	}
+}
+
+@mixin lower( $screenSize, $rotation: false ){
+	@if( $rotation == landscape or $rotation == portrait ) {
+		@media only screen and (max-height: $screenSize) and (orientation : $rotation) { @content; }
+	}
+	@else {
+		@media only screen and (max-height: $screenSize)  { @content; }
+	}
+}

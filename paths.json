@@ -1,0 +1,24 @@
+{
+	"js": {
+		"watch": [
+			"src/js/lib/**/*.js",
+			"src/js/*.js"
+		],
+		"src": [
+			"src/js/lib/jquery*.js",
+			"src/js/lib/*.js",
+			"src/js/*.js"
+		],
+		"dest": "public/js/"
+	},
+
+	"css": {
+		"watch": [
+			"src/scss/*.scss"
+		],
+		"src": [
+			"src/scss/style.scss"
+		],
+		"dest": "public/css/"
+	}
+}
